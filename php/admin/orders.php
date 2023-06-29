@@ -111,5 +111,4 @@ if (isset($_SESSION['id_user'])) {
             ?>
         </div>
     </body>
-
-    </html>
+</html>
