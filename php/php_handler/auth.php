@@ -72,7 +72,6 @@
                         if($info_user['password'] === $password) {
                             $_SESSION['login'] = $info_user['login'];
                             $_SESSION['id_user'] = $info_user['id_user'];
-                            $_SESSION['administrator_rights'] = $info_user['administrator_rights'];
                             header("location: ../admin/index_panel.php");
                         }
                         else {

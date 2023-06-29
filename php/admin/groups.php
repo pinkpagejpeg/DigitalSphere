@@ -37,8 +37,8 @@ if (isset($_SESSION['id_user'])) {
                         echo "
             <div class='admin_table_mainbox'> 
                 <div class='admin_table_topline'> 
-                    <h1 class='admin_table_title'>Услуги</h1> 
-                    <a class='admin_table_button_add' href='./create_services.php'>Добавить запись</a>
+                    <h1 class='admin_table_title'>Группы</h1> 
+                    <a class='admin_table_button_add' href='./create_groups.php'>Добавить запись</a>
                 </div> 
                 <div class='admin_table_box'> 
                     <div class='admin_table_titles'> 
