@@ -315,6 +315,11 @@ body {
   border-radius: 14px;
   padding: 19px 82px;
 }
+.hero_button:hover {
+  color: #222222;
+  background-color: #80D901;
+  transition: 0.4s;
+}
 
 /* main page section advantages */
 .advantages {

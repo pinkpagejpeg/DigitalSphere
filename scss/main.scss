@@ -203,6 +203,12 @@ body {
         border-radius: 14px;
         padding: 19px 82px;
     }
+
+    &_button:hover {
+        color: $gray;
+        background-color: $green;
+        transition: 0.4s;
+    }
 }
 
 /* main page section advantages */
