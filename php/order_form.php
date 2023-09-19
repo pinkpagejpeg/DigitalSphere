@@ -9,6 +9,7 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://js.hcaptcha.com/1/api.js" async defer></script>
         <link rel="stylesheet" href="/DigitalSphere/scss/main.css">
         <title>DigitalSphere</title>
     </head>
@@ -59,6 +60,7 @@
                                     echo "<option name=\"" . $InfoIdService->ID_Service . "\" value=\"" . $InfoIdService->ID_Service . "\">" . $InfoIdService->Name . "</option>";
                                 echo "</select>";
                             ?>
+                            <div class="h-captcha" data-sitekey="29f5232c-c66a-4caf-b4fd-b8d3262d444d"></div>
                             <input class="order_send_button" type="submit" name="button" value="Отправить">
                             <p class="order_rules">Нажимая на кнопку Отправить, вы даете согласие на обработку персональных данных</p>
                         </form>

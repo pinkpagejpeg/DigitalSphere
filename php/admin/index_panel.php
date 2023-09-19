@@ -1,7 +1,7 @@
 <?php
     session_start();
 
-    include "../php_connect/connect.php";
+    include "./php/php_connect/connect.php";
 
     if (isset($_SESSION['id_user'])) {
         $IDuser = $_SESSION['id_user'];
@@ -22,9 +22,19 @@
     </head>
     <body>
         <div class="container">
-            <?php
-                include "../php_handler/header.php";
-            ?>
+        <header class="header">
+            <nav class="menu">
+                <ul class="wrapper">
+                    <li class="menu_item_logo"><a href="../web/index.html" class="menu_link"><img class="img_logo" src="../web/image/logo.svg" alt="logo"></a></li>
+                    <li class="menu_item"><a href="../web/catalog.html" class="menu_link">Каталог</a></li>
+                    <li class="menu_item"><a href="../web/about_us.html" class="menu_link">О нас</a></li>
+                    <li class="menu_item"><a href="../web/contacts.html" class="menu_link">Контакты</a></li>
+                    <li class="menu_item"><p class="fio_user"><?php echo "".$InfoTrack->login."";?></p></li>
+                    <li class="menu_item_icon"><a href="../web/profile.html" class="menu_link"><img class="menu_icon" src="../web/image/profile.svg" alt="profile"></a></li>
+                    <li class="menu_item_icon"><a href="../web/cart.html" class="menu_link"><img class="menu_icon" src="../web/image/cart.svg" alt="cart"></a></li>
+                </ul>
+            </nav>
+        </header>
         </div>
         <div class="container">
             <div class="admin_panel_report">
