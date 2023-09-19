@@ -1357,7 +1357,7 @@ body {
   flex-direction: column;
   align-items: center;
   width: 612px;
-  height: 620px;
+  height: 560px;
   padding: 20px 20px 60px 50px;
   background-color: #222222;
   border-radius: 20px;
@@ -1459,7 +1459,7 @@ body {
   border-bottom: 3px solid #80D901;
   background-color: #222222;
   color: rgba(255, 255, 255, 0.7);
-  margin: 20px 0 20px 0;
+  margin: 20px 0 40px 0;
 }
 .order_rules {
   font-family: "Inter-Regular", sans-serif;
@@ -1488,10 +1488,6 @@ body {
 .order_close_form_button {
   margin: 20px 20px 20px 590px;
   cursor: pointer;
-}
-
-.h-captcha {
-  margin: 0 130px 20px 130px;
 }
 
 /* modal form support chat */
