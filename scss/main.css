@@ -574,9 +574,10 @@ body {
   font-family: "Inter-Bold", sans-serif;
   font-size: 18px;
   color: #f2f2f2;
+  margin-right: 40px;
 }
-.footer_dock:nth-child(2) {
-  margin: 0 40px;
+.footer_dock:nth-child(4) {
+  margin-right: 0;
 }
 .footer_socialbox {
   display: flex;

@@ -219,6 +219,7 @@
                 <div class="footer_dockbox">
                     <a class="footer_dock" href="#">Условия</a>
                     <a class="footer_dock" href="#">Конфиденциальность</a>
+                    <a class="footer_dock" href="./php/admin/autorization_form.php">Сотрудникам</a>
                     <a class="footer_dock" href="#">Cookies</a>
                 </div>
                 <div class="footer_socialbox">
