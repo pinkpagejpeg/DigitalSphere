@@ -40,7 +40,9 @@
     $statisticStartExecution = trim($_POST['Start_of_execution']);
     $statisticEndExecution = trim($_POST['End_of_execution']);
 
-    $queryStatistic = "UPDATE `Project_execution_statistics` SET `ID_Project` = $statisticIdProject, `ID_Group` = $statisticIdGroup, `Start_of_execution` = '$statisticStartExecution', `End_of_execution` = '$statisticEndExecution' WHERE ID_Project_execution_statistic = '$statistic'";
+    $statisticEndExecution = !empty($statisticEndExecution) ? "'$statisticEndExecution'" : "NULL";
+
+    $queryStatistic = "UPDATE `Project_execution_statistics` SET `ID_Project` = $statisticIdProject, `ID_Group` = $statisticIdGroup, `Start_of_execution` = '$statisticStartExecution', `End_of_execution` = $statisticEndExecution WHERE ID_Project_execution_statistic = '$statistic'";
     addslashes($queryStatistic);
     $resStatistic = mysqli_query($connect, $queryStatistic) or die(mysqli_error($connect));
     header("location: ../admin/statistics.php");

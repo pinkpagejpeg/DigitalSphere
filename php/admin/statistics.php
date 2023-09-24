@@ -89,7 +89,7 @@
                                         <p>$InfoStatistic->End_of_execution</p> 
                                     </div>
                                     <div class=\"admin_services_table_act\"> 
-                                        <a href=\"edit_services.php?idA=$InfoStatistic->ID_Project_execution_statistic\"><img class=\"admin_table_act_image\" src=\"/DigitalSphere/image/edit.png\"></a> 
+                                        <a href=\"edit_statistics.php?idA=$InfoStatistic->ID_Project_execution_statistic\"><img class=\"admin_table_act_image\" src=\"/DigitalSphere/image/edit.png\"></a> 
                                         <a href=\"?idD=$InfoStatistic->ID_Project_execution_statistic\"><img class=\"admin_table_act_image\" src=\"/DigitalSphere/image/remove.png\"></a> 
                                     </div> 
                                 </div> 

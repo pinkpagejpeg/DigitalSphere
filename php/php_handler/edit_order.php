@@ -40,7 +40,9 @@
     $orderDateReceipt = trim($_POST['Date_of_receipt']);
     $orderDateCompletion = trim($_POST['Date_of_completion']);
 
-    $queryOrder = "UPDATE `Orders` SET `ID_Client` = $orderIdClient, `ID_Service` = $orderIdService, `Date_of_receipt` = '$orderDateReceipt', `Date_of_completion` = '$orderDateCompletion' WHERE ID_Order = '$order'";
+    $orderDateCompletion = !empty($orderDateCompletion) ? "'$orderDateCompletion'" : "NULL";
+
+    $queryOrder = "UPDATE `Orders` SET `ID_Client` = $orderIdClient, `ID_Service` = $orderIdService, `Date_of_receipt` = '$orderDateReceipt', `Date_of_completion` = $orderDateCompletion WHERE ID_Order = '$order'";
     addslashes($queryOrder);
     $resOrder = mysqli_query($connect, $queryOrder) or die(mysqli_error($connect));
     header("location: ../admin/orders.php");

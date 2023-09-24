@@ -72,7 +72,9 @@
     $employeeStartWork = trim($_POST['Start_of_work']);
     $employeeEndWork = trim($_POST['End_of_work']);
 
-    $queryEmployee = "UPDATE `Employees` SET `Surname` = '$employeeSurname', `Name` = '$employeeName', `Middle_name` = '$employeeMiddleName', `ID_Department` = $employeeIdDepartment, `ID_Group` = $employeeIdGroup, `Salary` = $employeeSalary, `Start_of_work` = '$employeeStartWork', `End_of_work` = '$employeeEndWork' WHERE ID_Employee = '$employee'";
+    $employeeEndWork = !empty($employeeEndWork) ? "'$employeeEndWork'" : "NULL";
+
+    $queryEmployee = "UPDATE `Employees` SET `Surname` = '$employeeSurname', `Name` = '$employeeName', `Middle_name` = '$employeeMiddleName', `ID_Department` = $employeeIdDepartment, `ID_Group` = $employeeIdGroup, `Salary` = $employeeSalary, `Start_of_work` = '$employeeStartWork', `End_of_work` = $employeeEndWork WHERE ID_Employee = '$employee'";
     addslashes($queryEmployee);
     $resEmployee = mysqli_query($connect, $queryEmployee) or die(mysqli_error($connect));
     header("location: ../admin/employees.php");

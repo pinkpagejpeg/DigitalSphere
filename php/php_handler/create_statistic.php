@@ -36,7 +36,9 @@
     $statisticStartExecution = trim($_POST['Start_of_execution']);
     $statisticEndExecution = trim($_POST['End_of_execution']);
 
-    $qCreateStatistic = "INSERT INTO `Project_execution_statistics` (`ID_Project`, `ID_Group`, `Start_of_execution`, `End_of_execution`) VALUES ($statisticIdProject, $statisticIdGroup, '$statisticStartExecution', '$statisticEndExecution')";
+    $statisticEndExecution = !empty($statisticEndExecution) ? "'$statisticEndExecution'" : "NULL";
+
+    $qCreateStatistic = "INSERT INTO `Project_execution_statistics` (`ID_Project`, `ID_Group`, `Start_of_execution`, `End_of_execution`) VALUES ($statisticIdProject, $statisticIdGroup, '$statisticStartExecution', $statisticEndExecution)";
     addslashes($qCreateStatistic);
     $resCreateStatistic = mysqli_query($connect, $qCreateStatistic) or die(mysqli_error($connect));
 

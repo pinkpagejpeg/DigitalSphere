@@ -36,7 +36,9 @@
     $orderDateReceipt = trim($_POST['Date_of_receipt']);
     $orderDateCompletion = trim($_POST['Date_of_completion']);
 
-    $qCreateOrder = "INSERT INTO `Orders` (`ID_Client`, `ID_Service`, `Date_of_receipt`, `Date_of_completion`) VALUES ($orderIdClient, $orderIdService, '$orderDateReceipt', '$orderDateCompletion')";
+    $orderDateCompletion = !empty($orderDateCompletion) ? "'$orderDateCompletion'" : "NULL";
+
+    $qCreateOrder = "INSERT INTO `Orders` (`ID_Client`, `ID_Service`, `Date_of_receipt`, `Date_of_completion`) VALUES ($orderIdClient, $orderIdService, '$orderDateReceipt', $orderDateCompletion)";
     addslashes($qCreateOrder);
     $resCreateOrder = mysqli_query($connect, $qCreateOrder) or die(mysqli_error($connect));
 

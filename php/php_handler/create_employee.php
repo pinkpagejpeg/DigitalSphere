@@ -68,7 +68,9 @@
     $employeeStartWork = trim($_POST['Start_of_work']);
     $employeeEndWork = trim($_POST['End_of_work']);
 
-    $qCreateEmployee = "INSERT INTO `Employees` (`Surname`, `Name`, `Middle_name`, `ID_Department`, `ID_Group`, `Salary`, `Start_of_work`, `End_of_work`) VALUES ('$employeeSurname', '$employeeName', '$employeeMiddleName', $employeeIdDepartment, $employeeIdGroup, $employeeSalary, '$employeeStartWork', '$employeeEndWork')";
+    $employeeEndWork = !empty($employeeEndWork) ? "'$employeeEndWork'" : "NULL";
+
+    $qCreateEmployee = "INSERT INTO `Employees` (`Surname`, `Name`, `Middle_name`, `ID_Department`, `ID_Group`, `Salary`, `Start_of_work`, `End_of_work`) VALUES ('$employeeSurname', '$employeeName', '$employeeMiddleName', $employeeIdDepartment, $employeeIdGroup, $employeeSalary, '$employeeStartWork', $employeeEndWork)";
     addslashes($qCreateEmployee);
     $resCreateEmployee = mysqli_query($connect, $qCreateEmployee) or die(mysqli_error($connect));
 
