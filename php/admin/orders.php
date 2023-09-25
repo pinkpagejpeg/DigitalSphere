@@ -39,7 +39,23 @@ if (isset($_SESSION['id_user'])) {
                 <div class='admin_table_topline'> 
                     <h1 class='admin_table_title'>Заказы</h1> 
                     <a class='admin_table_button_add' href='./create_orders.php'>Добавить запись</a>
-                </div> 
+                </div>";
+
+                try {
+                    if (isset($_GET['idD'])) {
+                        $orderD = $_GET['idD'];
+                        $qDeleteOrder = "DELETE FROM `Orders` WHERE ID_Order='$orderD'";
+                        addslashes($qDeleteOrder);
+                        $resDeleteOrder = mysqli_query($connect, $qDeleteOrder) or die(mysqli_error($connect));
+                    }
+                }
+                catch (Exception $e) {
+                    echo "<p class=\"admin_table_error_title main_text\">Нарушение целостности базы данных:</p>";
+                    echo "<p class=\"main_text admin_table_error_text\">Сообщение об ошибке: ", $e, "</p>";
+                    echo "<a class=\"admin_table_error_button\"href=\"./orders.php\">Обновить</a>";
+                }
+
+                echo"
                 <div class='admin_table_box'> 
                     <div class='admin_table_titles'> 
                         <div class='admin_table_cell admin_services_table_id'> 
@@ -61,13 +77,6 @@ if (isset($_SESSION['id_user'])) {
                             <p>Действие</p> 
                         </div> 
                     </div>";
-
-                        if (isset($_GET['idD'])) {
-                            $orderD = $_GET['idD'];
-                            $qDeleteOrder = "DELETE FROM `Orders` WHERE ID_Order='$orderD'";
-                            addslashes($qDeleteOrder);
-                            $resDeleteOrder = mysqli_query($connect, $qDeleteOrder) or die(mysqli_error($connect));
-                        }
 
                         $qInfoOrder = "SELECT ID_Order, CONCAT(Clients.Surname, ' ', Clients.Name, ' ', Clients.Middle_name) AS FIO, Services.Name AS Services_name, Date_of_receipt, Date_of_completion FROM Orders, Clients, Services WHERE Orders.ID_Client = Clients.ID_Client AND Orders.ID_Service = Services.ID_Service";
                         addslashes($qInfoOrder);

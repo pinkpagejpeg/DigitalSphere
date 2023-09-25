@@ -30,6 +30,7 @@
 
         <div class="container">
         <?php
+
         if (isset($IDuser)) {
             if (isset($roles)) {
                 if ($roles == 'Администратор') {
@@ -38,7 +39,23 @@
                 <div class='admin_table_topline'> 
                     <h1 class='admin_table_title'>Услуги</h1> 
                     <a class='admin_table_button_add' href='./create_services.php'>Добавить запись</a>
-                </div> 
+                </div>";
+
+                try {
+                    if (isset($_GET['idD'])) {
+                        $serviceD = $_GET['idD'];
+                        $qDeleteService = "DELETE FROM `Services` WHERE ID_Service='$serviceD'";
+                        addslashes($qDeleteService);
+                        $resDeleteService = mysqli_query($connect, $qDeleteService) or die(mysqli_error($connect));
+                    }
+                }
+                catch (Exception $e) {
+                    echo "<p class=\"admin_table_error_title main_text\">Нарушение целостности базы данных:</p>";
+                    echo "<p class=\"main_text admin_table_error_text\">Сообщение об ошибке: ", $e, "</p>";
+                    echo "<a class=\"admin_table_error_button\"href=\"./services.php\">Обновить</a>";
+                }
+
+                echo "
                 <div class='admin_table_box'> 
                     <div class='admin_table_titles'> 
                         <div class='admin_table_cell admin_services_table_id'> 
@@ -54,13 +71,6 @@
                             <p>Действие</p> 
                         </div> 
                     </div> ";
-
-                        if (isset($_GET['idD'])) {
-                            $serviceD = $_GET['idD'];
-                            $qDeleteService = "DELETE FROM `Services` WHERE ID_Service='$serviceD'";
-                            addslashes($qDeleteService);
-                            $resDeleteService = mysqli_query($connect, $qDeleteService) or die(mysqli_error($connect));
-                        }
 
                         $qInfoService = "SELECT ID_Service, Services.Name AS Services_name, Type_of_services.Name AS Type_name FROM Services, Type_of_services WHERE Services.ID_Type_of_service  = Type_of_services.ID_Type_of_service ";
                         addslashes($qInfoService);

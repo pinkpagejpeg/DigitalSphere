@@ -1917,6 +1917,34 @@ body {
     &_act_image:nth-child(1) {
         margin: 0 10px;
     }
+
+    &_error_title {
+        font-size: 24px;
+        font-family: 'Inter-Bold', sans-serif;
+    }
+    
+    &_error_text {
+        max-width: 700px;
+        margin: 20px 0 20px 0;
+    }
+
+    &_error_button {
+        font-family: 'Play-Bold', sans-serif;
+        text-decoration: none;
+        font-size: 16px;
+        color: $white;
+        border: 3px solid $green;
+        border-radius: 14px;
+        padding: 10px 30px;
+        margin: 0 0 40px 0;
+        max-width: 80px;
+    }
+
+    &_error_button:hover {
+        color: $gray;
+        background-color: $green;
+        transition: 0.4s;
+    }
 }
 
 /* admin panel report */

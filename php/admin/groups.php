@@ -39,7 +39,23 @@ if (isset($_SESSION['id_user'])) {
                 <div class='admin_table_topline'> 
                     <h1 class='admin_table_title'>Группы</h1> 
                     <a class='admin_table_button_add' href='./create_groups.php'>Добавить запись</a>
-                </div> 
+                </div>";
+
+                try {
+                    if (isset($_GET['idD'])) {
+                        $groupD = $_GET['idD'];
+                        $qDeleteGroup = "DELETE FROM `Groups` WHERE ID_Group='$groupD'";
+                        addslashes($qDeleteGroup);
+                        $resDeleteGroup = mysqli_query($connect, $qDeleteGroup) or die(mysqli_error($connect));
+                    }
+                }
+                catch (Exception $e) {
+                    echo "<p class=\"admin_table_error_title main_text\">Нарушение целостности базы данных:</p>";
+                    echo "<p class=\"main_text admin_table_error_text\">Сообщение об ошибке: ", $e, "</p>";
+                    echo "<a class=\"admin_table_error_button\"href=\"./orders.php\">Обновить</a>";
+                }
+
+                echo "
                 <div class='admin_table_box'> 
                     <div class='admin_table_titles'> 
                         <div class='admin_table_cell admin_services_table_id'> 
@@ -52,13 +68,6 @@ if (isset($_SESSION['id_user'])) {
                             <p>Действие</p> 
                         </div> 
                     </div>";
-
-                        if (isset($_GET['idD'])) {
-                            $groupD = $_GET['idD'];
-                            $qDeleteGroup = "DELETE FROM `Groups` WHERE ID_Group='$groupD'";
-                            addslashes($qDeleteGroup);
-                            $resDeleteGroup = mysqli_query($connect, $qDeleteGroup) or die(mysqli_error($connect));
-                        }
 
                         $qInfoGroup = "SELECT * FROM Groups";
                         addslashes($qInfoGroup);

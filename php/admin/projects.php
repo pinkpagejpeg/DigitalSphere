@@ -56,6 +56,34 @@
                     }
                     ?>
                 </div> 
+                <?php 
+                if (isset($IDuser)) {
+                    if (isset($roles)) {
+                        if ($roles == 'Администратор') {
+                            try {
+                                if (isset($_GET['idD'])) {
+                                    $projectD = $_GET['idD'];
+                                    $qDeleteProject = "DELETE FROM `Projects` WHERE ID_Project='$projectD'";
+                                    addslashes($qDeleteProject);
+                                    $resDeleteProject = mysqli_query($connect, $qDeleteProject) or die(mysqli_error($connect));
+                                }
+                            }
+                            catch (Exception $e) {
+                                echo "<p class=\"admin_table_error_title main_text\">Нарушение целостности базы данных:</p>";
+                                echo "<p class=\"main_text admin_table_error_text\">Сообщение об ошибке: ", $e, "</p>";
+                                echo "<a class=\"admin_table_error_button\"href=\"./projects.php\">Обновить</a>";
+                            }
+                        }
+                        else {
+                            echo " ";
+                        }
+                    }
+                }
+                else {
+                    $_SESSION['message'] = 'Доступ к панели администратора закрыт для неавторизованных пользователей!';
+                    header("location: ../admin/autorization_form.php");
+                }
+                ?>
                 <div class="admin_table_box"> 
                     <div class="admin_table_titles"> 
                         <div class="admin_table_cell admin_projects_table_id"> 
@@ -90,12 +118,6 @@
 
                     <?php
                         if (isset($IDuser)) {
-                            if (isset($_GET['idD'])) {
-                                $projectD = $_GET['idD'];
-                                $qDeleteProject = "DELETE FROM `Projects` WHERE ID_Project='$projectD'";
-                                addslashes($qDeleteProject);
-                                $resDeleteProject = mysqli_query($connect, $qDeleteProject) or die(mysqli_error($connect));
-                            }
 
                             $qInfoProject = "SELECT * FROM Projects, Orders WHERE Projects.ID_Order = Orders.ID_Order";
                             addslashes($qInfoProject);

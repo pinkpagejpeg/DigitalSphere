@@ -37,7 +37,23 @@
                 <div class='admin_table_topline'> 
                     <h1 class='admin_table_title'>Клиенты</h1> 
                     <a class='admin_table_button_add' href='./create_clients.php'>Добавить запись</a>
-                </div> 
+                </div>";
+
+                try {
+                    if (isset($_GET['idD'])) {
+                        $clientD = $_GET['idD'];
+                        $qDeleteClient = "DELETE FROM `Clients` WHERE ID_Client='$clientD'";
+                        addslashes($qDeleteClient);
+                        $resDeleteClient = mysqli_query($connect, $qDeleteClient) or die(mysqli_error($connect));
+                    }
+                }
+                catch (Exception $e) {
+                    echo "<p class=\"admin_table_error_title main_text\">Нарушение целостности базы данных:</p>";
+                    echo "<p class=\"main_text admin_table_error_text\">Сообщение об ошибке: ", $e, "</p>";
+                    echo "<a class=\"admin_table_error_button\"href=\"./clients.php\">Обновить</a>";
+                }
+
+                echo "
                 <div class='admin_table_box'> 
                     <div class='admin_table_titles'> 
                         <div class='admin_table_cell admin_services_table_id'> 
@@ -62,13 +78,6 @@
                             <p>Действие</p> 
                         </div> 
                     </div>";
-
-                        if (isset($_GET['idD'])) {
-                            $clientD = $_GET['idD'];
-                            $qDeleteClient = "DELETE FROM `Clients` WHERE ID_Client='$clientD'";
-                            addslashes($qDeleteClient);
-                            $resDeleteClient = mysqli_query($connect, $qDeleteClient) or die(mysqli_error($connect));
-                        }
 
                         $qInfoClient = "SELECT * FROM Clients";
                         addslashes($qInfoClient);

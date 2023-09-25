@@ -1763,6 +1763,30 @@ body {
 .admin_table_act_image:nth-child(1) {
   margin: 0 10px;
 }
+.admin_table_error_title {
+  font-size: 24px;
+  font-family: "Inter-Bold", sans-serif;
+}
+.admin_table_error_text {
+  max-width: 700px;
+  margin: 20px 0 20px 0;
+}
+.admin_table_error_button {
+  font-family: "Play-Bold", sans-serif;
+  text-decoration: none;
+  font-size: 16px;
+  color: #f2f2f2;
+  border: 3px solid #80D901;
+  border-radius: 14px;
+  padding: 10px 30px;
+  margin: 0 0 40px 0;
+  max-width: 80px;
+}
+.admin_table_error_button:hover {
+  color: #222222;
+  background-color: #80D901;
+  transition: 0.4s;
+}
 
 /* admin panel report */
 .admin_panel_report_mainbox {
