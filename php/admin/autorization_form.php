@@ -25,6 +25,7 @@
                         <div class="g-recaptcha" data-sitekey="6LeFycomAAAAAGdx4nwdklPT2OzfUsTAaa37uvpx"></div>
                         <input class="auth_button" type="submit"  name="submit" value="Войти"/> 
                     </form>
+                    <a class="admin_link_back auth_back" href="/DigitalSphere/index.html">Вернуться на главную</a>
                 </div>
             </div>
         </div>   
